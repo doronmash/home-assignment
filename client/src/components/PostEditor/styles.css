@@ -2,5 +2,18 @@
   min-width: 400px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
+  padding: 20px;
+}
+
+
+.post-editor-content h3{
+  margin-bottom: 20px;
+}
+
+
+.post-editor-content div{
+  margin-bottom: 5px;
+  width: 100%;
 }
