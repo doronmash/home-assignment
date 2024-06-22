@@ -32,18 +32,21 @@ export const makeApiCall = async <T>(url: string, method: string, body?: any): P
     }
 };
 
+// API call return all users
 export const addLikeToPost = async (postId: number, userId: number): Promise<void> => {
     const data = { postId, userId };
 
     await makeApiCall<void>(`posts/like`, "POST", data);
 };
 
+// API call delete post by post ID
 export const deletePost = async (postId: number): Promise<boolean> => {
     const response = await makeApiCall<boolean>(`posts/${postId}`, "DELETE");
     
     return !!response;
 };
 
+// API calll return id of all users that like the post and convert them to user names.
 export const getLikedUsers = async (postId: number): Promise<string[]> => {
     try {
         const response = await makeApiCall<{ likedBy: number[] }>(`posts/likedBy/${postId}`, 'GET');
@@ -66,26 +69,23 @@ export const getLikedUsers = async (postId: number): Promise<string[]> => {
     }
 };
 
+// API call return all users
 export const getUsers = async (): Promise<UserData[]> => {
     const response = await makeApiCall<UserData[]>(`users`, "GET");
 
     return response || [];
 };
 
+// API call return user by user ID
 export const getUser = async (userId: number): Promise<UserData | undefined> => {
     const response = await makeApiCall<UserData>(`users/${userId}`, "GET");
 
     return response;
 };
 
+// API call return all posts
 export const getPosts = async (): Promise<PostData[]> => {
     const response = await makeApiCall<PostData[]>(`posts`, "GET");
 
     return response || [];
-};
-
-export const createPost = async (postData: PostData): Promise<PostData | undefined> => {
-    const response = await makeApiCall<PostData>(`posts`, "POST", postData);
-
-    return response;
 };

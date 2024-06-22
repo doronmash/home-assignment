@@ -9,7 +9,7 @@ usersRouter.get('/users', async (req: Request, res: Response, next: NextFunction
         const content = await fsPromises.readFile('./db/users.json', 'utf-8');
 
         const users = JSON.parse(content);
-
+        
         if (content) {
             res.json(users);
         } else {

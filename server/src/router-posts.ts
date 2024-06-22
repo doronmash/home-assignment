@@ -104,7 +104,7 @@ postsRouter.post('/posts/like', async (req: Request, res: Response, next: NextFu
         } else { 
             post.likedBy.splice(userLikedIndex, 1);
 
-            post.likes = (post.likes || 1) - 1;
+            post.likes = post.likes - 1;
         }
 
         const contentPosts = JSON.stringify(posts, null, 4);
